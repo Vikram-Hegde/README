@@ -6,6 +6,18 @@
 
 body {
 	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+	@media (width <= 700px) {
+		&.nav-active::before {
+			content: '';
+			display: block;
+			position: absolute;
+			z-index: 1;
+			inset: 0;
+			background-color: rgba(0, 0, 0, 0.5);
+			backdrop-filter: blur(5px);
+		}
+	}
 }
 
 :where(input, button) {
@@ -27,22 +39,64 @@ a {
 	block-size: 100vh;
 	display: grid;
 	grid-template-columns: auto 1fr 1fr;
-	grid-template-rows: 3.5rem auto;
+	grid-template-rows: 4rem auto;
 	grid-template-areas:
 		'nav header header'
 		'nav main preview';
+
+	@media (width <= 1100px) {
+		grid-template-columns: auto 1fr;
+
+		.preview {
+			grid-column: span 2;
+		}
+	}
 }
 
 nav {
 	grid-area: nav;
+
+	@media (width <= 700px) {
+		position: fixed;
+		z-index: 10;
+		inset: 0;
+		transition: translate 0.2s ease-in-out;
+		translate: -100% 0;
+
+		.nav-active & {
+			translate: 0 0;
+		}
+
+		&.nav-menu {
+			display: block;
+		}
+	}
 }
 
 main {
 	grid-area: main;
+
+	@media (width <= 1100px) {
+		&.editor-hidden {
+			display: none;
+		}
+	}
 }
 
 header {
 	grid-area: header;
+
+	.logo,
+	.menu {
+		display: none;
+	}
+
+	@media (width <= 700px) {
+		.logo,
+		.menu {
+			display: block;
+		}
+	}
 }
 
 :is(nav, main, .preview) {
@@ -51,6 +105,12 @@ header {
 
 .preview {
 	grid-area: preview;
+
+	@media (width <= 1100px) {
+		&.preview-hidden {
+			display: none;
+		}
+	}
 }
 
 .topic {
@@ -58,4 +118,22 @@ header {
 	max-inline-size: 22ch;
 	overflow: hidden;
 	text-overflow: ellipsis;
+}
+
+.md-editor {
+	height: calc(100% - 3.5rem);
+	font-size: 1rem;
+}
+
+.md-editor-content {
+	font-family: ui-monospace, 'Cascadia Code', 'Source Code Pro', Menlo, Consolas,
+		'DejaVu Sans Mono', monospace;
+}
+
+.preview-button {
+	visibility: hidden;
+
+	@media (width <= 1100px) {
+		visibility: visible;
+	}
 }
