@@ -8,7 +8,6 @@ const Nav = ({
 	selectedSectionID,
 	setSelectedSectionID,
 	removeSection,
-	setShowMenu,
 }) => {
 	return (
 		<nav className={`p-3 bg-gray-100 inline-[30ch]`}>

@@ -1,4 +1,4 @@
-export const defaultData = [
+export const sections = [
 	{
 		id: 'project-title-and-description',
 		topic: 'Project Title and Description',

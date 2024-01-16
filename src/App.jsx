@@ -1,14 +1,14 @@
 import { useEffect, useMemo, useState } from 'react'
 import './App.css'
 import MarkdownEditor from '@uiw/react-markdown-editor'
-import { defaultData } from './assets/data.js'
+import { sections } from './assets/data.js'
 import Nav from './components/Nav'
 import Logo from './components/Logo'
 
 let counter = 1
 
 function App() {
-	const [topics, setTopics] = useState(defaultData)
+	const [topics, setTopics] = useState(sections)
 	const [selectedSectionID, setSelectedSectionID] = useState(topics[0].id)
 	const [copied, setCopied] = useState(false)
 	const [isPreview, setIsPreview] = useState(false)
