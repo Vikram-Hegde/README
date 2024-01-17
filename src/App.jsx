@@ -97,7 +97,7 @@ function App() {
 			<AppContext.Provider
 				value={{
 					topics,
-					selectedSection,
+					selectedSectionID,
 					setSelectedSectionID,
 					removeSection,
 					addNewSection,
