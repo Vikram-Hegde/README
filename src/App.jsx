@@ -4,6 +4,8 @@ import MarkdownEditor from '@uiw/react-markdown-editor'
 import { sections } from './assets/data.js'
 import Nav from './components/Nav'
 import Logo from './components/Logo'
+import Button from './components/Button.jsx'
+import AppContext from './AppContext.js'
 
 let counter = 1
 
@@ -92,45 +94,41 @@ function App() {
 
 	return (
 		<>
-			<Nav
-				topics={topics}
-				addNewSection={addNewSection}
-				selectedSectionID={selectedSectionID}
-				setSelectedSectionID={setSelectedSectionID}
-				removeSection={removeSection}
-				showMenu={showMenu}
-				setShowMenu={setShowMenu}
-			/>
+			<AppContext.Provider
+				value={{
+					topics,
+					selectedSection,
+					setSelectedSectionID,
+					removeSection,
+					addNewSection,
+				}}
+			>
+				<Nav />
+			</AppContext.Provider>
 			<header className="p-3 flex items-center justify-end gap-3">
-				<button
-					onClick={handleToggleNav}
-					className="menu p-3 bg-gray-100 hover:bg-gray-200 flex rounded-2 outline-gray-300"
-				>
+				<Button onClick={handleToggleNav} className="menu">
 					<i className="i-solar-hamburger-menu-outline" />
-				</button>
+				</Button>
 				<div className="logo mr-auto">
 					<Logo />
 				</div>
-				<button
+				<Button
 					onClick={() => setIsPreview((old) => !old)}
-					className="p-3 bg-gray-100 hover:bg-gray-200 flex rounded-2 outline-gray-300 | preview-button"
+					className="preview-button"
 				>
 					{isPreview ? (
 						<i className="i-solar-pen-2-linear" />
 					) : (
 						<i className="i-solar-eye-outline" />
 					)}
-				</button>
-				<button
-					onClick={copyToClipboard}
-					className="p-3 bg-gray-100 hover:bg-gray-200 flex rounded-2 outline-gray-300"
-				>
+				</Button>
+				<Button onClick={copyToClipboard}>
 					{copied ? (
 						<i className="i-solar-check-square-linear" />
 					) : (
 						<i className="i-solar-copy-outline" />
 					)}
-				</button>
+				</Button>
 			</header>
 			<main className={`${isPreview ? 'editor-hidden' : ''} p-4`}>
 				<input

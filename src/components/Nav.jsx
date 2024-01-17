@@ -1,14 +1,10 @@
 import Topic from './Topic'
 import Logo from './Logo'
-import PropTypes from 'prop-types'
+import { useContext } from 'react'
+import AppContext from '../AppContext'
 
-const Nav = ({
-	topics,
-	addNewSection,
-	selectedSectionID,
-	setSelectedSectionID,
-	removeSection,
-}) => {
+const Nav = () => {
+	const { topics, addNewSection } = useContext(AppContext)
 	return (
 		<nav className={`p-3 bg-gray-100 inline-[30ch]`}>
 			<Logo />
@@ -17,14 +13,7 @@ const Nav = ({
 			</h2>
 			<ul>
 				{topics.map(({ id, topic }) => (
-					<Topic
-						key={id}
-						topic={topic}
-						id={id}
-						selectedSectionID={selectedSectionID}
-						setSelectedSectionID={setSelectedSectionID}
-						removeSection={removeSection}
-					/>
+					<Topic key={id} topic={topic} id={id} />
 				))}
 			</ul>
 			<button
@@ -36,16 +25,6 @@ const Nav = ({
 			</button>
 		</nav>
 	)
-}
-
-Nav.propTypes = {
-	topics: PropTypes.array.isRequired,
-	addNewSection: PropTypes.func.isRequired,
-	selectedSectionID: PropTypes.string.isRequired,
-	setSelectedSectionID: PropTypes.func.isRequired,
-	removeSection: PropTypes.func.isRequired,
-	showMenu: PropTypes.bool.isRequired,
-	setShowMenu: PropTypes.func.isRequired,
 }
 
 export default Nav

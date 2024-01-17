@@ -1,12 +1,10 @@
 import PropTypes from 'prop-types'
+import { useContext } from 'react'
+import AppContext from '../AppContext'
 
-const Topic = ({
-	topic,
-	id,
-	selectedSectionID,
-	setSelectedSectionID,
-	removeSection,
-}) => {
+const Topic = ({ topic, id }) => {
+	const { selectedSectionID, setSelectedSectionID, removeSection } =
+		useContext(AppContext)
 	return (
 		<li
 			className={`flex gap-3 justify-between ${
@@ -34,9 +32,6 @@ const Topic = ({
 Topic.propTypes = {
 	topic: PropTypes.string.isRequired,
 	id: PropTypes.string.isRequired,
-	selectedSectionID: PropTypes.string.isRequired,
-	setSelectedSectionID: PropTypes.func.isRequired,
-	removeSection: PropTypes.func.isRequired,
 }
 
 export default Topic

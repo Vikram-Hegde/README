@@ -1,7 +1,7 @@
 const Logo = () => {
 	return (
 		<h2 className="flex items-center gap-1">
-			README
+			README 
 			<svg
 				xmlns="http://www.w3.org/2000/svg"
 				width="1.75rem"
