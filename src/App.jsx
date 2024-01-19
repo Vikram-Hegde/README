@@ -108,6 +108,17 @@ function App() {
 		}
 	}
 
+	const generateMarkdown = () => {
+		const blob = new Blob([preview], { type: 'text/plain' })
+
+		const link = document.createElement('a')
+		link.href = URL.createObjectURL(blob)
+		link.download = 'README.md'
+		document.body.appendChild(link)
+		link.click()
+		document.body.removeChild(link)
+	}
+
 	return (
 		<>
 			<AppContext.Provider
@@ -137,6 +148,9 @@ function App() {
 					) : (
 						<i className="i-solar-eye-outline" />
 					)}
+				</Button>
+				<Button onClick={generateMarkdown}>
+					<i className="i-solar-file-download-outline" />
 				</Button>
 				<Button onClick={copyToClipboard}>
 					{copied ? (
