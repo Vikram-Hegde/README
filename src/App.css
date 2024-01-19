@@ -185,12 +185,21 @@ header {
 
 .md-editor {
 	height: calc(100% - 3.5rem);
-	font-size: 1rem;
+	font-size: 0.9rem;
 }
 
-.md-editor-content {
+.ͼ1 .cm-scroller {
 	font-family: ui-monospace, 'Cascadia Code', 'Source Code Pro', Menlo, Consolas,
 		'DejaVu Sans Mono', monospace;
+	white-space: pre-wrap;
+	word-break: break-all;
+	word-wrap: break-word;
+}
+
+.md-editor-content-editor,
+.md-editor-inner,
+.cm-editor {
+	height: 100%;
 }
 
 .preview-button {

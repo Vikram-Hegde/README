@@ -2,14 +2,12 @@ export const sections = [
 	{
 		id: 'project-title-and-description',
 		topic: 'Project Title and Description',
-		content: `
-[![Stars](https://img.shields.io/github/stars/vikram-hegde/readme)]()
+		content: `[![Stars](https://img.shields.io/github/stars/vikram-hegde/readme)]()
 [![Contributors](https://img.shields.io/github/contributors/vikram-hegde/readme)]()
 [![GitHub Issues](https://img.shields.io/github/issues/vikram-hegde/readme.svg?style=flat-square)](https://github.com/vikram-hegde/readme/issues)
 [![GitHub Pull Requests](https://img.shields.io/github/issues-pr/vikram-hegde/readme.svg?style=flat-square)](https://github.com/vikram-hegde/readme/pulls)
 
-Brief description of your project goes here. Explain what the project does and why it's useful.
-		`,
+Brief description of your project goes here. Explain what the project does and why it's useful.`,
 	},
 	{
 		id: 'table-of-contents',
@@ -18,8 +16,7 @@ Brief description of your project goes here. Explain what the project does and w
 - [Installation](#installation)
 - [Usage](#usage)
 - [Contributing](#contributing)
-- [License](#license)
-		`,
+- [License](#license)`,
 	},
 	{
 		id: 'installation',
@@ -29,8 +26,7 @@ Provide step-by-step instructions on how to install your project. If applicable,
 
 \`\`\`bash
 npm install
-\`\`\`
-		`,
+\`\`\``,
 	},
 	{
 		id: 'usage',
@@ -39,8 +35,7 @@ npm install
 
 \`\`\`bash
 npm start
-\`\`\`
-		`,
+\`\`\``,
 	},
 	{
 		id: 'contributing',
