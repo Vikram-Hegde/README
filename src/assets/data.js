@@ -2,27 +2,56 @@ export const sections = [
 	{
 		id: 'project-title-and-description',
 		topic: 'Project Title and Description',
-		content: 'This is a project title and description',
+		content: `
+[![Stars](https://img.shields.io/github/stars/vikram-hegde/readme)]()
+[![Contributors](https://img.shields.io/github/contributors/vikram-hegde/readme)]()
+[![GitHub Issues](https://img.shields.io/github/issues/vikram-hegde/readme.svg?style=flat-square)](https://github.com/vikram-hegde/readme/issues)
+[![GitHub Pull Requests](https://img.shields.io/github/issues-pr/vikram-hegde/readme.svg?style=flat-square)](https://github.com/vikram-hegde/readme/pulls)
+
+Brief description of your project goes here. Explain what the project does and why it's useful.
+		`,
+	},
+	{
+		id: 'table-of-contents',
+		topic: 'Table of Contents',
+		content: `
+- [Installation](#installation)
+- [Usage](#usage)
+- [Contributing](#contributing)
+- [License](#license)
+		`,
 	},
 	{
 		id: 'installation',
 		topic: 'Installation',
-		content: 'This is an installation guide',
+		content: `
+Provide step-by-step instructions on how to install your project. If applicable, include code snippets.
+
+\`\`\`bash
+npm install
+\`\`\`
+		`,
 	},
 	{
 		id: 'usage',
 		topic: 'Usage',
-		content: 'This is a usage guide',
+		content: `Explain how to use your project. Provide examples and screenshots if possible.
+
+\`\`\`bash
+npm start
+\`\`\`
+		`,
 	},
 	{
 		id: 'contributing',
 		topic: 'Contributing',
-		content: 'This is a contributing guide',
+		content:
+			'Explain how others can contribute to your project. Include guidelines for submitting issues and pull requests.',
 	},
 	{
 		id: 'license',
 		topic: 'License',
-		content: 'This is a license guide',
+		content: 'This project is licensed under the [MIT License](LICENSE).',
 	},
 	{
 		id: 'acknowledgements',
