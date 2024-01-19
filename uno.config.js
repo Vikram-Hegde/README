@@ -1,4 +1,9 @@
-import { defineConfig, presetIcons, presetUno } from 'unocss'
+import {
+	defineConfig,
+	presetIcons,
+	presetUno,
+	transformerVariantGroup,
+} from 'unocss'
 
 export default defineConfig({
 	presets: [
@@ -13,4 +18,22 @@ export default defineConfig({
 			},
 		}),
 	],
+	theme: {
+		colors: {
+			accent: {
+				100: 'var(--surface-100)',
+				200: 'var(--surface-200)',
+				300: 'var(--surface-300)',
+				400: 'var(--surface-400)',
+			},
+			text: {
+				color: {
+					100: 'var(--text-100)',
+					200: 'var(--text-200)',
+					300: 'var(--text-300)',
+				},
+			},
+		},
+	},
+	transformers: [transformerVariantGroup()],
 })

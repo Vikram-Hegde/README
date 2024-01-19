@@ -8,7 +8,7 @@ const Topic = ({ topic, id }) => {
 	return (
 		<li
 			className={`flex gap-3 justify-between ${
-				selectedSectionID === id ? 'bg-gray-200' : ''
+				selectedSectionID === id ? 'bg-accent-200' : ''
 			}`}
 		>
 			<a
@@ -21,7 +21,7 @@ const Topic = ({ topic, id }) => {
 			</a>
 			<button
 				onClick={() => removeSection(id)}
-				className="p-2 text-gray-400 hover:text-red-400"
+				className="p-2 bg-inherit text-[var(--text-300)] hover:text-red-400"
 			>
 				<i className="i-solar-trash-bin-2-linear" />
 			</button>

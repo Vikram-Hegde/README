@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useLayoutEffect, useMemo, useState } from 'react'
 import './App.css'
 import MarkdownEditor from '@uiw/react-markdown-editor'
 import { sections } from './assets/data.js'
@@ -23,6 +23,21 @@ function App() {
 		setShowMenu(true)
 	}
 
+	useLayoutEffect(() => {
+		if (window.matchMedia('(prefers-color-scheme: light)').matches) {
+			document.documentElement.setAttribute('data-color-mode', 'light')
+			window
+				.matchMedia('(prefers-color-scheme: light)')
+				.addEventListener('change', (e) => {
+					if (e.matches) {
+						document.documentElement.setAttribute('data-color-mode', 'light')
+					} else {
+						document.documentElement.setAttribute('data-color-mode', 'dark')
+					}
+				})
+		}
+	}, [])
+
 	useEffect(() => {
 		const handleNavClose = (e) => {
 			if (document.querySelector('.nav-active') && showMenu) {
@@ -32,6 +47,7 @@ function App() {
 				}
 			}
 		}
+
 		document.addEventListener('click', handleNavClose)
 		return () => {
 			document.removeEventListener('click', handleNavClose)
@@ -137,7 +153,7 @@ function App() {
 					onChange={(e) =>
 						updateTopicOrContent(selectedSectionID, 'topic', e.target.value)
 					}
-					className="w-full p-2 border-1 border-gray-200 outline-gray-300 bg-gray-50 border-solid text-xl font-medium mb-2 rounded-md hover:bg-gray-100 focus:bg-gray-100"
+					className="w-full p-2 text-xl font-medium mb-2 rounded-md "
 				/>
 				<MarkdownEditor
 					enablePreview={false}
