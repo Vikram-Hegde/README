@@ -69,9 +69,10 @@ body {
 	color: var(--text-200);
 	cursor: pointer;
 	border: none;
+	line-height: 1cap;
 
 	&:hover {
-		background-color: var(--surface-400);
+		background-color: var(--surface-300);
 	}
 }
 
@@ -207,5 +208,15 @@ header {
 
 	@media (width <= 1100px) {
 		visibility: visible;
+	}
+}
+
+/* scrollbar styles */
+:where(.md-editor-content-editor, .cm-scroller, .preview) {
+	scrollbar-width: thin;
+	scrollbar-color: var(--surface-400) var(--surface-200);
+
+	@media (prefers-reduced-motion: no-preference) {
+		scroll-behavior: smooth;
 	}
 }
