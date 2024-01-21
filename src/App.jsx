@@ -6,11 +6,12 @@ import Nav from './components/Nav'
 import Logo from './components/Logo'
 import Button from './components/Button.jsx'
 import AppContext from './AppContext.js'
+import useLocalStorage from './useLocalStorage.js'
 
 let counter = 1
 
 function App() {
-	const [topics, setTopics] = useState(sections)
+	const [topics, setTopics] = useLocalStorage('topics', sections)
 	const [selectedSectionID, setSelectedSectionID] = useState(topics[0].id)
 	const [copied, setCopied] = useState(false)
 	const [isPreview, setIsPreview] = useState(false)
@@ -110,13 +111,10 @@ function App() {
 
 	const generateMarkdown = () => {
 		const blob = new Blob([preview], { type: 'text/plain' })
-
 		const link = document.createElement('a')
 		link.href = URL.createObjectURL(blob)
 		link.download = 'README.md'
-		document.body.appendChild(link)
 		link.click()
-		document.body.removeChild(link)
 	}
 
 	return (
