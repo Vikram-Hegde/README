@@ -55,7 +55,14 @@ function App() {
 		}
 	}, [showMenu])
 
-	const selectedSection = topics.find(({ id }) => id === selectedSectionID)
+	const selectedSection = useMemo(() => {
+		const index = topics.findIndex(({ id }) => id === selectedSectionID)
+		if (index === -1) {
+			setSelectedSectionID(topics[topics.length - 1].id)
+			return topics[topics.length - 1]
+		}
+		return topics[index]
+	}, [selectedSectionID, topics])
 
 	const preview = useMemo(() => {
 		return topics.reduce((acc, { topic, content }) => {
@@ -90,13 +97,18 @@ function App() {
 	}
 
 	const updateTopicOrContent = (id, topicOrContent, newContent) => {
-		setTopics((oldSections) =>
-			oldSections.map((section) =>
-				section.id === id
-					? { ...section, [topicOrContent]: newContent }
-					: section
-			)
-		)
+		setTopics((oldSections) => {
+			const index = oldSections.findIndex((section) => section.id === id)
+			const newSections = [...oldSections]
+			if (topicOrContent === 'topic')
+				newSections[index] = {
+					...newSections[index],
+					id: newContent.toLowerCase().replaceAll(' ', '-'),
+					topic: newContent,
+				}
+			else newSections[index] = { ...newSections[index], content: newContent }
+			return newSections
+		})
 	}
 
 	const copyToClipboard = async () => {
@@ -161,7 +173,7 @@ function App() {
 			<main className={`${isPreview ? 'editor-hidden' : ''} p-4`}>
 				<input
 					type="text"
-					value={selectedSection.topic}
+					value={selectedSection?.topic}
 					onChange={(e) =>
 						updateTopicOrContent(selectedSectionID, 'topic', e.target.value)
 					}
@@ -169,7 +181,7 @@ function App() {
 				/>
 				<MarkdownEditor
 					enablePreview={false}
-					value={selectedSection.content}
+					value={selectedSection?.content}
 					onChange={(value) =>
 						updateTopicOrContent(selectedSectionID, 'content', value)
 					}
