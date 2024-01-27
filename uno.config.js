@@ -26,13 +26,6 @@ export default defineConfig({
 				300: 'var(--surface-300)',
 				400: 'var(--surface-400)',
 			},
-			text: {
-				color: {
-					100: 'var(--text-100)',
-					200: 'var(--text-200)',
-					300: 'var(--text-300)',
-				},
-			},
 		},
 	},
 	transformers: [transformerVariantGroup()],
